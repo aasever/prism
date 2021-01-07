@@ -1,0 +1,171 @@
+<h2>QASM example</h2>
+
+<pre class="line-numbers language-qasm">
+    <code>
+		// Name of Experiment: Grover N=2 A=11 v1
+
+		OPENQASM 2.0;
+		include "qelib1.inc";
+
+		gate hello()
+
+		opaque s0;
+
+		if (q[5] == 0)
+
+		qreg q[5];
+		creg c[5];
+
+		h q[1];
+		h q[2];
+		h q[2];
+		cx q[1],q[2];
+		h q[2];
+		h q[1];
+		h q[2];
+		x q[1];
+		x q[2];
+		h q[2];
+		cx q[1], q[2];
+		h q[2];
+		x q[1];
+		x q[2];
+		h q[1];
+		h q[2];
+		measure q[1] ->c[1];
+		measure q[2]-> c[2];
+
+		measure;
+
+		measure q[2];
+
+		reset q[2];
+
+		reset q;
+
+		measure q -> c;
+
+		sin(Pi + Pi/4);
+
+		map
+
+		measure q[0] -> c[1];
+
+
+		// Text
+		qreg q[3];
+		qreg a[2];
+		creg c[3];
+		creg syn[2];
+		gate syndrome d1,d2,d3,a1,a2
+		{
+		  cx d1,a1; cx d2,a1;
+		  cx d2,a2; cx d3,a2;
+		}
+		x q[0]; // error
+
+		2e-9
+
+		2.2
+		2
+		2e-9
+
+		2e10
+
+		2e+11
+
+
+		-2
+
+		+2e10
+
+		barrier q;
+		syndrome q[0],q[1],q[2],a[0],a[1];
+		measure a -> syn;
+		if(syn==1) x q[0];
+		if(syn==2) x q[2];
+		if(syn==3) x q[1];
+    measure q -> c;
+
+    //
+
+    OPENQASM 2.0;   		// Open Quantum Assembly Language to write basic quantum circiutis
+                // QASM documentation and examples	https://arxiv.org/abs/1707.03429
+    include "qelib1.inc";   // standard header with basic library
+
+
+    qreg qubit[1]; 			// Create a register of just one qubit called qubit
+    creg cbit[1];	// Create a register of just one classical bit called cbit
+
+    // State starts in the ground state 0.
+
+    // Then, I scramble it by rotating it here and there and everywhere.
+    // Don't cheat! Don't look too much at how I scramble it, ok? 
+
+
+      // ...............................
+      // I'm trying to obscure how I'm scrambling the qubit, so stop looking!
+      // Stop cheating, don't look in this section
+      u3(6.0*pi/12,-pi*.25,12*pi/3) qubit[0];   
+      u3(12*pi/24,-0.025*pi*10,pi*0.25) qubit[0];   
+      u3(0.125*pi*8,4*pi,3*pi/3) qubit[0];
+      u3(19*pi,0.50*pi,8*pi*0.0625) qubit[0];
+      u3(0.125*pi/0.0625,10*0,-3*pi) qubit[0];
+      u3(3*pi/1.5,12*pi*0.5,6*pi/3) qubit[0];
+      u3(16*pi*0.5,10*pi,8*pi*0.0625) qubit[0];
+      u3(pi*20,18*pi*0.5,pi*0.5) qubit[0];
+      u3(2*pi*0.5,-4*pi*0.125,5*pi/2) qubit[0];
+      u3(0.0625*pi*8,6*pi,16*pi*0.5) qubit[0]; 
+      // If you are looking here, you are cheating and wasting your time.
+      u3(30*pi/3,0.25*pi*32,8*pi*0.0625) qubit[0];
+      u3(40*pi,6*pi/1.5,4*pi*0.125) qubit[0];
+      u3(62*pi*0.5,6*pi/12,0.015625*pi*32) qubit[0];
+      u3(17*pi,0.125*pi*32,pi) qubit[0];
+      u3(16*pi/2,24*pi/4,-pi) qubit[0];
+      u3(9*pi,10*pi*0.2,0.10*pi*50) qubit[0];
+      u3(36*pi,0.5*pi,0.03125*pi*16) qubit[0];
+      u3(0,-pi*20,4*pi/16) qubit[0];
+      u3(-20*pi/2.5,-30*pi/.15,30*pi*0.025) qubit[0];
+      // Ok. Done obscuring the scrambling. 
+      // You can start looking from here onwards.
+      // ...............................
+
+
+    // Continue reading here.
+
+
+    // To solve this RubiQ's Sphere problem, you need to rotate the state so  
+    // it reads 0 with probability 1 when ran regularly for more than 50 iterations
+
+
+    // To make it simpler, know that the solution will be just a 
+    // combination of the following gates.
+    // ...............................
+    // ...............................	
+    // z qubit[0];   		// pi rotation about the Z-axis
+    // x qubit[0];			// pi rotation about the X-axis
+    // y qubit[0];			// pi rotation about the Y-axis
+    // h qubit[0];          // The combination of two rotations, pi about the Z-axis followed by pi/2 about the Y-axis
+    // s qubit[0]; 			// S-gate, square root of Z gate
+    // sdg qubit[0]; 		// conjugate of S-gate
+    // t qubit[0]; 			// Phase-gate, conjugate of square root of S-gate
+    // tdg qubit[0]; 		// conjugate of Phase-gate
+    // ...............................
+    // ...............................
+    // to solve this, cut and paste the gate, do some trial error mixing them up, 
+    // until you get the state to read 0 for many iterations.
+
+
+    // ...............................
+    // add gates here to solve the problem
+    // ...............................
+
+
+    barrier qubit[0];
+    measure qubit[0] -> cbit[0];
+    </code>
+</pre>
+
+<!-- <pre data-src="https://code.jquery.com/jquery-2.1.0.min.js"></pre> -->
+
+<!-- <script src="../prismjs-language-qasm.js"></script> -->

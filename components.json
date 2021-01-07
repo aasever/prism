@@ -944,6 +944,10 @@
 			"alias": "py",
 			"owner": "multipetros"
 		},
+		"qasm": {
+			"title": "QASM",
+			"owner": "Qiskit"
+		},
 		"q": {
 			"title": "Q (kdb+ database)",
 			"owner": "Golmote"

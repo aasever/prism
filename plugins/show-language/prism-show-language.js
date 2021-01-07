@@ -155,6 +155,7 @@
 		"pbfasm": "PureBasic",
 		"purs": "PureScript",
 		"py": "Python",
+		"qasm": "QASM",
 		"q": "Q (kdb+ database)",
 		"qml": "QML",
 		"rkt": "Racket",
